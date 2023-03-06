@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Syne">
+	<title>Unit Converter</title>
+	<style>
+        body {
+                font-family: 'Syne', sans-serif;
+                text-align: center; 
+            }
+		input[type="number"] {
+			width: 80px;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-right: 10px;
+		}
+		
+		select {
+			width: 150px;
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-right: 10px;
+		}
+		
+		input[type="button"] {
+			background-color: #000000;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+            width: 25%;
+		}
+        input[type="button"]:hover {
+			background-color: #0E86D4;
+		}
+	</style>
+</head>
+<body>
+	<h1><b>Unit Converter</b></h1>
+	<form>
+		<input type="number" id="inputValue">
+		<select id="inputUnit">
+			<option value="cm">Centimeter (cm)</option>
+			<option value="m">Meter (m)</option>
+			<option value="km">Kilometer (km)</option>
+		</select>
+		<br><br>
+		<input type="number" id="outputValue" readonly>
+		<select id="outputUnit">
+			<option value="cm">Centimeter (cm)</option>
+			<option value="m">Meter (m)</option>
+			<option value="km">Kilometer (km)</option>
+		</select>
+        <br><br>
+        <input type="button" value="Convert" onclick="convert()">
+		
+	</form>
+	<script>
+		function convert() {
+			// Get the input value and unit
+			var inputValue = document.getElementById('inputValue').value;
+			var inputUnit = document.getElementById('inputUnit').value;
+			
+			// Get the output unit
+			var outputUnit = document.getElementById('outputUnit').value;
+			
+			// Convert the input value to meters
+			if (inputUnit === 'cm') {
+				var meters = inputValue / 100;
+			} else if (inputUnit === 'm') {
+				var meters = inputValue;
+			} else if (inputUnit === 'km') {
+				var meters = inputValue * 1000;
+			}
+			
+			// Convert meters to the output unit
+			if (outputUnit === 'cm') {
+				var outputValue = meters * 100;
+			} else if (outputUnit === 'm') {
+				var outputValue = meters;
+			} else if (outputUnit === 'km') {
+				var outputValue = meters / 1000;
+			}
+			
+			// Set the output value
+			document.getElementById('outputValue').value = outputValue;
+		}
+	</script>
+</body>
+</html>
